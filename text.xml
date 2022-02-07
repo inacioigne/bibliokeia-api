@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<record>
+	<leader>01929nam a22003857c 4500</leader>
+	<controlfield tag="001">15658945</controlfield>
+	<controlfield tag="005">20211212234208.0</controlfield>
+	<controlfield tag="008">090313s2008 enk 000 f eng </controlfield>
+	<datafield tag="010" ind1=" " ind2=" ">
+		<subfield code="a">92005291</subfield>
+	</datafield>
+	<datafield tag="020" ind1=" " ind2=" ">
+		<subfield code="a">9780747588023</subfield>
+	</datafield>
+	<datafield tag="040" ind1=" " ind2=" ">
+		<subfield code="a">DLC</subfield>
+		<subfield code="b">DLC</subfield>
+	</datafield>
+	<datafield tag="041" ind1="1" ind2=" ">
+		<subfield code="a">eng</subfield>
+		<subfield code="h">por</subfield>
+	</datafield>
+	<datafield tag="100" ind1="1" ind2=" ">
+		<subfield code="a">Hatoum, Milton</subfield>
+		<subfield code="d">1952-</subfield>
+	</datafield>
+	<datafield tag="240" ind1="1" ind2="0">
+		<subfield code="a">Cinzas do norte</subfield>
+		<subfield code="l">English</subfield>
+	</datafield>
+	<datafield tag="245" ind1="1" ind2="0">
+		<subfield code="a">Ashes of the Amazon</subfield>
+		<subfield code="c">Milton Hatoum ; translated by John Gledson.</subfield>
+	</datafield>
+	<datafield tag="260" ind1=" " ind2=" ">
+		<subfield code="a">London :</subfield>
+		<subfield code="b">Óbidos :</subfield>
+		<subfield code="c">2008</subfield>
+	</datafield>
+</record>

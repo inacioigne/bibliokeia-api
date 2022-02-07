@@ -1,0 +1,153 @@
+{
+  "leader": "01383cam a2200349 i 4500",
+  "controfield": {
+    "tag_001": "19806541",
+    "tag_005": "20190917171722.0",
+    "tag_008": "170721s2012    bl a     b    000 0dpor d"
+  },
+  "datafield": {
+    "tag_906": {
+      "ind1": " ",
+      "ind2": " ",
+      "a": "7",
+      "b": "cbc",
+      "c": "copycat",
+      "d": "3",
+      "e": "ncip",
+      "f": "20",
+      "g": "y-gencatlg"
+    },
+    "tag_925": {
+      "ind1": "0",
+      "ind2": " ",
+      "a": "acquire",
+      "b": "1 shelf copy",
+      "x": "policy default"
+    },
+    "tag_955": {
+      "ind1": " ",
+      "ind2": " ",
+      "b": "wr18 2017-07-21",
+      "c": "wr07 2019-05-22 z-processor to I/R Office Section OTB19",
+      "a": "be22 2019-06-19 OTB19 Received"
+    },
+    "tag_010": {
+      "ind1": " ",
+      "ind2": " ",
+      "a": "  2017316851"
+    },
+    "tag_020": {
+      "ind1": " ",
+      "ind2": " ",
+      "a": "8575125931"
+    },
+    "tag_035": {
+      "ind1": " ",
+      "ind2": " ",
+      "a": "(OCoLC)on1048597414"
+    },
+    "tag_040": {
+      "ind1": " ",
+      "ind2": " ",
+      "a": "PAU",
+      "b": "eng",
+      "c": "PAU",
+      "e": "rda",
+      "d": "DLC"
+    },
+    "tag_042": {
+      "ind1": " ",
+      "ind2": " ",
+      "a": "lccopycat"
+    },
+    "tag_050": {
+      "ind1": "0",
+      "ind2": "0",
+      "a": "PQ9697.A75",
+      "b": "P56 2012"
+    },
+    "tag_100": {
+      "ind1": "1",
+      "ind2": " ",
+      "a": "Pinto, Zemaria,",
+      "e": "author."
+    },
+    "tag_245": {
+      "ind1": "1",
+      "ind2": "2",
+      "a": "A invenção do expressionismo em Augusto dos Anjos /",
+      "c": "Zemaria Pinto."
+    },
+    "tag_264": {
+      "ind1": " ",
+      "ind2": "1",
+      "a": "Manaus :",
+      "b": "Valer Editora,",
+      "c": "2012"
+    },
+    "tag_300": {
+      "ind1": " ",
+      "ind2": " ",
+      "a": "309 pages :",
+      "b": "illustrations ;",
+      "c": "23 cm"
+    },
+    "tag_336": {
+      "2": "rdacontent",
+      "ind1": " ",
+      "ind2": " ",
+      "a": "text",
+      "b": "txt"
+    },
+    "tag_337": {
+      "2": "rdamedia",
+      "ind1": " ",
+      "ind2": " ",
+      "a": "unmediated",
+      "b": "n"
+    },
+    "tag_338": {
+      "2": "rdacarrier",
+      "ind1": " ",
+      "ind2": " ",
+      "a": "volume",
+      "b": "nc"
+    },
+    "tag_500": {
+      "ind1": " ",
+      "ind2": " ",
+      "a": "\"Incluindo uma antologia da poesia expressionista do poeta.\""
+    },
+    "tag_504": {
+      "ind1": " ",
+      "ind2": " ",
+      "a": "Includes bibliographical references (pages 203-212 and page 309)."
+    },
+    "tag_600": {
+      "ind1": "1",
+      "ind2": "0",
+      "a": "Anjos, Augusto dos,",
+      "d": "1884-1914",
+      "x": "Criticism and interpretation."
+    },
+    "tag_650": {
+      "ind1": " ",
+      "ind2": "0",
+      "a": "Expressionism",
+      "x": "History and criticism."
+    },
+    "tag_700": {
+      "ind1": "1",
+      "ind2": "2",
+      "a": "Anjos, Augusto dos,",
+      "d": "1884-1914.",
+      "t": "Works.",
+      "k": "Selections."
+    },
+    "tag_985": {
+      "ind1": " ",
+      "ind2": " ",
+      "e": "ODE-rj"
+    }
+  }
+}

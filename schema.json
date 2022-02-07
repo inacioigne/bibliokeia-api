@@ -1,0 +1,44 @@
+{
+  "title": "Marc_Bibliographic",
+  "type": "object",
+  "properties": {
+    "datafield": {
+      "$ref": "#/definitions/Datafield"
+    },
+    "leader": {
+      "title": "Leader",
+      "default": "01602cam a2200325 a 4500",
+      "type": "string"
+    }
+  },
+  "required": [
+    "datafield"
+  ],
+  "definitions": {
+    "Tag_245": {
+      "title": "Tag_245",
+      "type": "object",
+      "properties": {
+        "a": {
+          "title": "A",
+          "type": "string"
+        }
+      },
+      "required": [
+        "a"
+      ]
+    },
+    "Datafield": {
+      "title": "Datafield",
+      "type": "object",
+      "properties": {
+        "tag_245": {
+          "$ref": "#/definitions/Tag_245"
+        }
+      },
+      "required": [
+        "tag_245"
+      ]
+    }
+  }
+}
