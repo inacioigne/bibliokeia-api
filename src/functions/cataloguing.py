@@ -4,6 +4,7 @@ from src.db.init_db import session
 import xml.etree.ElementTree as et
 from copy import deepcopy
 import json
+from datetime import datetime 
 
 def create_marcxml(model_item):
     doc = minidom.Document()
@@ -72,13 +73,30 @@ def create_marcjson(item_request):
 
 def create_item(item_request):
     marcjson = item_request.json()
-    marcdict = json.loads(marcjson) 
-    print(marcdict)
+    marcdict = json.loads(marcjson)
     
     item = Item(
-            title = marcdict.get('datafield').get('tag_245').get('a'),
-            marc = marcdict
+            #title = marcdict.get('datafield').get('tag_245').get('a'),
+            #marc = marcdict
+            title = "TEST"
             )
+    # #Número de controle
+    # marcdict.get('controlfield')['tag_001'] = item.id
+    # #Codigo da agencia catalogadora
+    # marcdict.get('controlfield')['tag_003'] = "BR-MnINPA"
+    # #Data e hora da última modificação
+    # now = datetime.now
+    # s = now.strftime("%f")
+    # s = int(s)/1000000
+    # now = now.strftime("%Y%m%d%H%M%S")
+    # now = int(now)
+    # dateHour = round(now+s,1)
+    # marcdict.get('controlfield')['tag_005'] = dateHour
+
+
+
+    item.marc = marcdict
+    
     session.add(item)
     session.commit()
     

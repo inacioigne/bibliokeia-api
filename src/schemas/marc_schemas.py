@@ -1,6 +1,8 @@
 from re import T
-from pydantic import BaseModel
+from pydantic import BaseModel, parse_obj_as
 from typing import Dict, List, Optional
+
+
 
 class Tag_100(BaseModel):
     a: Optional[str]
@@ -46,7 +48,7 @@ class Controlfield(BaseModel):
   tag_008: str
 
 class Marc_Bibliographic(BaseModel):
-    leader = '01602cam a2200325 a 0000'
-    controlfield: Dict
-    datafield: Dict
+    leader: str
+    controlfield: List[Dict]
+    datafield: List[Dict]
 
