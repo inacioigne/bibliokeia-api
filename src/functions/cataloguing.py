@@ -82,7 +82,7 @@ def create_item(item_request):
     item = Item(
             #title = marcdict.get('datafield').get('tag_245').get('a'),
             marc = marcdict,
-            title = getTitle(marcdict)
+            #title = getTitle(marcdict)
             )
     # #Número de controle
     # marcdict.get('controlfield')['tag_001'] = item.id
