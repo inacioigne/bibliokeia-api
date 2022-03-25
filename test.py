@@ -1,49 +1,78 @@
-from src.db.init_db import session
-from src.db.models import Item
-from src.schemas.requests_body import Model_Item, Model_Item_Edit
-#from src.schemas.marc_schemas import Marc_Bibliographic
-from src.functions.cataloguing import edit_item
-import xml.etree.ElementTree as et
-from xml.dom import minidom
-import httpx
-import json
-import re
-from sqlalchemy import update
-from copy import deepcopy
-import collections
-from random import randint
-from pydantic import BaseModel
-from typing import Dict, List, Optional
+marc = {
+  "leader": "    nam#a22     4a#4500",
+  "controlfield": [
+    {
+      "003": "BR-MnINPA",
+      "005": "20220324184833.0",
+      "008": "220324s||||bl #####000#0#por##"
+    }
+  ],
+  "datafield": [
+    {
+      "100": {
+        "Ind2": "#",
+        "a": "Oliveira, Inácio",
+        "d": "1959-"
+      }
+    },
+    {
+      "245": {
+        "a": "A amazônia liquída",
+        "b": "molhada",
+        "c": "Inácio Oliveira"
+      }
+    },
+    {
+      "250": {
+        "Ind1": "#",
+        "Ind2": "#"
+      }
+    },
+    {
+      "260": {
+        "Ind2": "#"
+      }
+    },
+    {
+      "300": {
+        "Ind1": "#",
+        "Ind2": "#"
+      }
+    },
+    {
+      "520": {
+        "Ind2": "#"
+      }
+    },
+    {
+      "650": {
+        "a": "Tambaqui"
+      }
+    },
+    {
+      "040": [
+        {
+          "a": "BR-MnINPA"
+        },
+        {
+          "b": "por"
+        }
+      ]
+    },
+    {
+      "020": {
+        "Ind1": "#",
+        "Ind2": "#"
+      }
+    },
+    {
+      "650": {
+        "a": "Sulamba"
+      }
+    }
+  ]
+}
 
-
-class Tag_245(BaseModel):
-    a: str
-
-class Datafield(BaseModel):
-    tag_245: Tag_245
-
-class Controlfield(BaseModel):
-  tag_008: str
-
-class Marc_Bibliographic(BaseModel):
-    leader = '01602cam a2200325 a 4500'
-    controlfield = Controlfield
-    datafield: Datafield
-
-record = Marc_Bibliographic(
-  datafield=Datafield(tag_245={'a': 'A poesia mineira no século XX'})
-
-record.json()
-
-    """
-j = json.dumps(Marc_Bibliographic.schema(), indent=2)
-with open('schema.json', 'w') as out:
-  out.write(j)
-
-
-
-datafield = Datafield(tag_245={'a': 'A poesia mineira no século XX'})
-
-record = Marc_Bibliographic(
-  datafield=Datafield(tag_245={'a': 'A poesia mineira no século XX'})
-)"""
+for field in marc["datafield"]:
+  if '245' in field.keys():
+    print(field['245'].get('a'))

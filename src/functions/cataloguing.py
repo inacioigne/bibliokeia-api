@@ -70,6 +70,10 @@ def create_marcjson(item_request):
 
     print(item_request.leader)
 
+def getTitle(marc):
+  for field in marc["datafield"]:
+    if '245' in field.keys():
+      return field['245'].get('a')
 
 def create_item(item_request):
     marcjson = item_request.json()
@@ -77,8 +81,8 @@ def create_item(item_request):
     
     item = Item(
             #title = marcdict.get('datafield').get('tag_245').get('a'),
-            #marc = marcdict
-            title = "TEST"
+            marc = marcdict,
+            title = getTitle(marcdict)
             )
     # #Número de controle
     # marcdict.get('controlfield')['tag_001'] = item.id
@@ -95,12 +99,13 @@ def create_item(item_request):
 
 
 
-    item.marc = marcdict
+    #item.marc = marcdict
     
     session.add(item)
     session.commit()
     
-    return {'msg': 'Item created successefully'}
+    return {'msg': 'Item created successefully',
+    'id': item.id}
 
 def edit_item(item_id, item_edit):
     item = session.query(Item).filter_by(id = item_id).first()
