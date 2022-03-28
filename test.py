@@ -76,3 +76,9 @@ marc = {
 for field in marc["datafield"]:
   if '245' in field.keys():
     print(field['245'].get('a'))
+
+def getTitle(marc):
+  for field in marc["datafield"]:
+    if '245' in field.keys():
+      return field['245'].get('a')
+      

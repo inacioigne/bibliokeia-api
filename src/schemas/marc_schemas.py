@@ -49,6 +49,6 @@ class Controlfield(BaseModel):
 
 class Marc_Bibliographic(BaseModel):
     leader: str
-    controlfield: List[Dict]
+    controlfield: Dict
     datafield: Dict
 
