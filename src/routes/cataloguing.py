@@ -1,12 +1,14 @@
 from fastapi import APIRouter
 from src.schemas.requests_body import Model_Item, Model_Item_Edit
-from src.schemas.marc_schemas import Marc_Bibliographic
+from src.schemas.marc_schemas import Marc_Bibliographic, TagMarc
 from src.functions.cataloguing import create_item, edit_item
 from src.functions.marcxml_to_json import xml_to_json
 from src.db.init_db import session
 from src.db.models import Item
 from fastapi import HTTPException, Response
 from fastapi.encoders import jsonable_encoder
+from copy import deepcopy
+import json
 
 
 router = APIRouter()
@@ -45,10 +47,23 @@ async def cataloguing(item_request: Marc_Bibliographic):
 
     return response
 
+# #Item Update
+# @router.patch("/cataloguing/edit/{item_id}", response_model=Item, tags=["Cataloguing"])
+# async def update_item(item_id: str, item: Item):
 
+    
+@router.patch('/cataloguing/edit', tags=["Cataloguing"])
+async def update_item( tagMarc: TagMarc):
 
-@router.put('/cataloguing/edit/{item_id}', tags=["Cataloguing"])
-async def cataloguing_edit(item_id: int, item_edit: Model_Item_Edit):
-    response = edit_item(item_id, item_edit)
+    tagMarc = tagMarc.json()
+    tagMarc = json.loads(tagMarc)
+    #print("OLHA AQUI: ",type(tagMarc))
+    item = session.query(Item).filter_by(id = tagMarc['id']).first()
+    marc = deepcopy(item.marc)
+    marc[tagMarc['marc']][tagMarc['tag']] = tagMarc['subcampos']
+    item.marc = marc
 
-    return response
+    session.commit()
+
+    return {'msg': 'Item updated successefully',
+    'id': item.id}

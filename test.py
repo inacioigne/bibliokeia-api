@@ -1,84 +1,40 @@
-marc = {
-  "leader": "    nam#a22     4a#4500",
-  "controlfield": [
-    {
-      "003": "BR-MnINPA",
-      "005": "20220324184833.0",
-      "008": "220324s||||bl #####000#0#por##"
-    }
-  ],
-  "datafield": [
-    {
-      "100": {
-        "Ind2": "#",
-        "a": "Oliveira, Inácio",
-        "d": "1959-"
-      }
-    },
-    {
-      "245": {
-        "a": "A amazônia liquída",
-        "b": "molhada",
-        "c": "Inácio Oliveira"
-      }
-    },
-    {
-      "250": {
-        "Ind1": "#",
-        "Ind2": "#"
-      }
-    },
-    {
-      "260": {
-        "Ind2": "#"
-      }
-    },
-    {
-      "300": {
-        "Ind1": "#",
-        "Ind2": "#"
-      }
-    },
-    {
-      "520": {
-        "Ind2": "#"
-      }
-    },
-    {
-      "650": {
-        "a": "Tambaqui"
-      }
-    },
-    {
-      "040": [
-        {
-          "a": "BR-MnINPA"
-        },
-        {
-          "b": "por"
-        }
-      ]
-    },
-    {
-      "020": {
-        "Ind1": "#",
-        "Ind2": "#"
-      }
-    },
-    {
-      "650": {
-        "a": "Sulamba"
-      }
-    }
-  ]
-}
+from src.db.init_db import session
+from src.db.models import Item
+from src.schemas.marc_schemas import Marc_Bibliographic
+from pydantic import BaseModel
+from typing import Dict, List, Optional
+from copy import deepcopy
 
-for field in marc["datafield"]:
-  if '245' in field.keys():
-    print(field['245'].get('a'))
 
-def getTitle(marc):
-  for field in marc["datafield"]:
-    if '245' in field.keys():
-      return field['245'].get('a')
-      
+class TagMarc(BaseModel):
+  id: str
+  tag: str
+  ind1: Optional[str] = None
+  ind2: Optional[str] = None
+  subfields: Dict
+
+tagMarc = {'id': '53',
+ 'marc': 'datafield',
+  'tag': '040', 
+  'ind1': 'undefined', 
+  'ind2': 'undefined',
+  'marc': "datafield",
+  "subcampos": {
+    "a":"BR-MnINPA",
+    "b": "eng"
+  }
+  }
+
+def update_item(tagMarc: TagMarc):
+  
+  item = session.query(Item).filter_by(id = tagMarc['id']).first()
+  marc = deepcopy(item.marc)
+  marc[tagMarc['marc']][tagMarc['tag']] = tagMarc['subcampos']
+
+  item.marc = marc
+  #session.add(item)
+  session.commit()
+
+  return item
+
+
