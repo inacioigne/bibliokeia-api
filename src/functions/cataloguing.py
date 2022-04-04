@@ -80,26 +80,9 @@ def create_item(item_request):
     marcdict = json.loads(marcjson)
     
     item = Item(
-            #title = marcdict.get('datafield').get('tag_245').get('a'),
+            title = marcdict.get('datafield').get('245').get('a').replace(':',''),
             marc = marcdict,
-            #title = getTitle(marcdict)
             )
-    # #Número de controle
-    # marcdict.get('controlfield')['tag_001'] = item.id
-    # #Codigo da agencia catalogadora
-    # marcdict.get('controlfield')['tag_003'] = "BR-MnINPA"
-    # #Data e hora da última modificação
-    # now = datetime.now
-    # s = now.strftime("%f")
-    # s = int(s)/1000000
-    # now = now.strftime("%Y%m%d%H%M%S")
-    # now = int(now)
-    # dateHour = round(now+s,1)
-    # marcdict.get('controlfield')['tag_005'] = dateHour
-
-
-
-    #item.marc = marcdict
     
     session.add(item)
     session.commit()

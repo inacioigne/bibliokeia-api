@@ -1,0 +1,5 @@
+__pypackages__/
+**/__pycache__/**
+__pycache__/**
+venv/
+src/functions/__pycache__/**

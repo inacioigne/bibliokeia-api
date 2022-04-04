@@ -1,3 +1,5 @@
+#from dbm.ndbm import library
+from ast import For
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Date, LargeBinary, ForeignKey
 #from sqlalchemy.types import JSON
@@ -49,6 +51,7 @@ class Item(Base):
     #relationship
     authorship = relationship("Authorship", back_populates="item")
     item_subject = relationship("Item_Subject", back_populates="item")
+    exemplares = relationship("Exemplar", back_populates="item")
 
     def __repr__(self):
         return self.title
@@ -82,3 +85,25 @@ class Subject(Base):
 
     def __repr__(self):
         return self.name
+
+class Exemplar(Base):
+    __tablename__ = 'exemplar'
+    id = Column(Integer, primary_key=True)
+    item_id = Column(Integer, ForeignKey('item.id'))
+    
+    number = Column(String(10))
+    callnumber = Column(String(30))
+    edition = Column(String(10))
+    year = Column(YEAR)
+    volume = Column(String(5))
+    library = Column(String(30))
+    shelf = Column(String(30))
+    status = Column(String(30))
+    collection = Column(String(30))
+    created_at = Column(Date, default=datetime.now())
+    #user
+
+    item = relationship("Item", back_populates="exemplares")
+
+    def __repr__(self):
+        return self.number
