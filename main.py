@@ -36,30 +36,3 @@ app.include_router(cataloguing.router)
 app.include_router(imports.router)
 app.include_router(items.router)
 app.include_router(checkup.router)
-
-# items = {
-#     "foo": {"name": "Foo", "price": 50.2},
-#     "bar": {"name": "Bar", "description": "The bartenders", "price": 62, "tax": 20.2},
-#     "baz": {"name": "Baz", "description": None, "price": 50.2, "tax": 10.5, "tags": []},
-# }
-
-# @app.get("/test_items/{item_id}", response_model=Test_Item)
-# async def read_item(item_id: str):
-#     data = """<?xml version="1.0"?>
-#     <shampoo>
-#     <Header>
-#         Apply shampoo here.
-#     </Header>
-#     <Body>
-#         You'll have to use soap here.
-#     </Body>
-#     </shampoo>
-#     """
-#     return Response(content=data, media_type="application/xml")
-
-# @app.put("/test_items/{item_id}", response_model=Test_Item)
-# async def update_item(item_id: str, item: Test_Item):
-#     update_item_encoded = jsonable_encoder(item)
-#     items[item_id] = update_item_encoded
-#     return update_item_encoded
-    

@@ -1,7 +1,10 @@
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
 __pypackages__/
-__pycache__/main.cpython-310.pyc
-src/db/__pycache__/models.cpython-310.pyc
 **/__pycache__/**
 __pycache__/**
 venv/
-src/functions/__pycache__/**
