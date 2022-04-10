@@ -56,14 +56,12 @@ async def get_exemplares(item_id: int):
 async def create_exemplar(item_id: int, exemplar: Exe):
 
     item = session.query(Item).filter_by(id = item_id).first()
-    exs = exemplar.exs
+    exs = exemplar.exemplares
     for ex in exs:
         print(ex)
         e = Exemplar(
             number = ex.number,
             callnumber = ex.callnumber,
-            edition = ex.edition,
-            year = ex.year,
             volume = ex.volume,
             library = ex.library,
             shelf = ex.shelf,
@@ -100,15 +98,15 @@ async def cataloguing(item_request: Marc_Bibliographic):
     return response
 
     
-@router.patch('/cataloguing/edit', tags=["Cataloguing"])
-async def patch_item( tagMarc: TagMarc):
-
+@router.patch('/cataloguing/item/{item_id}/patch', tags=["Cataloguing"])
+async def patch_item( item_id: int, tagMarc: TagMarc):
     tagMarc = tagMarc.json()
     tagMarc = json.loads(tagMarc)
-    #print("OLHA AQUI: ",type(tagMarc))
-    item = session.query(Item).filter_by(id = tagMarc['id']).first()
+
+    item = session.query(Item).filter_by(id = item_id).first()
     marc = deepcopy(item.marc)
-    marc[tagMarc['marc']][tagMarc['tag']] = tagMarc['subcampos']
+    marc.get('datafield')[tagMarc.get('tag')] = tagMarc.get('subfield')
+
     item.marc = marc
 
     session.commit()

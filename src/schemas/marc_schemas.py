@@ -5,12 +5,9 @@ from typing import Dict, List, Optional
 
 
 class TagMarc(BaseModel):
-  id: str
   tag: str
-  ind1: Optional[str] = None
-  ind2: Optional[str] = None
   marc: str
-  subcampos: Dict
+  subfield: Dict
 
 class TagsMarc(BaseModel):
   id: str
@@ -24,14 +21,13 @@ class Marc_Bibliographic(BaseModel):
 class Exemplar_Schema(BaseModel):
   number: str
   callnumber: str
-  edition: Optional[str]
-  year: Optional[str]
   volume: Optional[str]
   library: str
   shelf: Optional[str]
   status: Optional[str]
   collection: Optional[str]
 
+
 class Exe(BaseModel):
-  exs: List[Exemplar_Schema]
+  exemplares: List[Exemplar_Schema]
 

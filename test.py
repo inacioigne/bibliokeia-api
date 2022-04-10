@@ -6,20 +6,9 @@ from typing import Dict, List, Optional
 from copy import deepcopy
 from datetime import date
 
-item = session.query(Item).filter_by(id = 1 ).first()
+item = session.query(Item).filter_by(id = 5 ).first()
 
-def get_exemplares(item):
-  exs  = list()
-  for ex in item.exemplares:
-    d = ex.__dict__
-    d.pop('_sa_instance_state')
-    
-    exs.append(
-      d
-    )
-  return exs
-
-x = get_exemplares(item)
+{"Ind1": '0', "Ind2": '0', "a": 'Os miseráveis ', "c": 'Victor Hugox'}
 
 
 

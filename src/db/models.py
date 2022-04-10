@@ -1,7 +1,8 @@
 #from dbm.ndbm import library
 from ast import For
+from enum import unique
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Date, LargeBinary, ForeignKey
+from sqlalchemy import Column, Integer, String, Date, LargeBinary, ForeignKey, true
 #from sqlalchemy.types import JSON
 from sqlalchemy.dialects.mysql import YEAR, JSON
 from sqlalchemy.orm import relationship
@@ -104,6 +105,17 @@ class Exemplar(Base):
     #user
 
     item = relationship("Item", back_populates="exemplares")
+
+    def __repr__(self):
+        return self.number
+
+#Users
+class User(Base):
+    __tablename__ = 'user'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100))
+    email = Column(String(100), unique=True)
+    hash_password = Column(String(255))
 
     def __repr__(self):
         return self.number
