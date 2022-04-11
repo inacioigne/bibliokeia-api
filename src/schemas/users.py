@@ -1,13 +1,14 @@
 from pydantic import BaseModel, Field, validator
 from security import get_password_hash
 
+
 class UsuarioResponse(BaseModel):
     id: int
-    nome: str
+    name: str
     email: str
 
 class UserCreateRequest(BaseModel):
-    nome: str
+    name: str
     email: str
     hash_password: str = Field(alias='password')
 

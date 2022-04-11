@@ -116,6 +116,8 @@ class User(Base):
     name = Column(String(100))
     email = Column(String(100), unique=True)
     hash_password = Column(String(255))
+    created_at = Column(Date, default=datetime.now())
 
     def __repr__(self):
-        return self.number
+        return f"User(id={self.id!r}, name={self.name!r}, email={self.email!r})"
+         
