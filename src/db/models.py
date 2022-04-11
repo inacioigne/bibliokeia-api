@@ -44,10 +44,9 @@ class Item(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String(length=255))
     marc = Column(JSON)
-    #format = Column(String(length=100), default='marc_utf8')
-    #schema = Column(String(length=100), default='marc21')
-    #marc_record = Column(LargeBinary)
+    logs = Column(JSON)
     created_at = Column(Date, default=datetime.now())
+    
 
     #relationship
     authorship = relationship("Authorship", back_populates="item")

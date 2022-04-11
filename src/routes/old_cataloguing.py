@@ -16,7 +16,7 @@ from datetime import date
 router = APIRouter()
 
 #Get item title 
-@router.get('/cataloguing/item/{item_id}', tags=["Cataloguing"])
+@router.get('/cataloguing/item/{item_id}', tags=["Cataloguing"],)
 async def get_item(item_id: int):
     item = session.query(Item).filter_by(id = item_id).first()
     if item is None:

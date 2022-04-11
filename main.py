@@ -1,11 +1,13 @@
 import re
 from fastapi import FastAPI, Response
+#from routes import old_cataloguing
 from src.db.init_db import initializeDatabase
 #from src.db.models import Item
 #from src.schemas.requests_body import Test_Item
-from src.routes import cataloguing, imports, items, checkup, users
+from src.routes import imports, items, checkup, users
 from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
+from src.routes.cataloging import item
 
 initializeDatabase()
 
@@ -32,8 +34,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(cataloguing.router)
+#app.include_router(old_cataloguing.router)
 app.include_router(imports.router)
 app.include_router(items.router)
 app.include_router(checkup.router)
 app.include_router(users.router, prefix='/usuarios', tags=['Usuarios'])
+app.include_router(item.router, prefix='/cataloging/item', tags=['Cataloging Item'] )

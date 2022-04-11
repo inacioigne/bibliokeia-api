@@ -1,0 +1,7 @@
+{
+    "leader": "LEADER",
+    "controlfield": {"008": "CAMPO FIXO"},
+    "datafield": {
+      "100": {"a": "Cervantes, Miguel"},
+      "245": {"a": "Dom Quixote"}}
+  }
