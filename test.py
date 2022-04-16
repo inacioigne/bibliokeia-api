@@ -1,4 +1,11 @@
-{
+import json
+from src.db.init_db import session
+from src.db.models import Item, Exemplar, User
+from src.schemas.request.cataloguing.item import Marc_Bibliographic, Field_Marc
+from copy import deepcopy
+from datetime import datetime
+
+marc = {
   "leader": "00861cam a22002777  4500",
   "controlfields": {
     "003": "BR-RjBN",
@@ -34,17 +41,9 @@
         "a": "A divina comedia", 
         "b": "em forma de narrativa",
         "c": "Dante ; traducao de Cordelia Dias d'Aguiar ; introducao, notas e revisao do texto Assis Brasil. -"
-      },
-      "650": [
-        {
-          "indicators": {
-            "Ind1": "1",
-            "Ind2": "2"
-          },
-          "subfields": {
-            "a": "Romance"} 
-        }
-      ]
+      }
     }
   }
 }
+
+#r = Marc_Bibliographic(**marc)

@@ -25,7 +25,6 @@ async def get_item(item_id: int):
     return {'title': item.title}
 
 
-
 #Get metadata in json marc
 @router.get('/cataloguing/item/{item_id}/json', tags=["Cataloguing"])
 async def get_item_json(item_id: int):

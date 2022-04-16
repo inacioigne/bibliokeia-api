@@ -7,6 +7,7 @@ from sqlalchemy import Column, Integer, String, Date, LargeBinary, ForeignKey, t
 from sqlalchemy.dialects.mysql import YEAR, JSON
 from sqlalchemy.orm import relationship
 from datetime import datetime
+import json
 
 Base = declarative_base() 
 
@@ -117,6 +118,10 @@ class User(Base):
     hash_password = Column(String(255))
     created_at = Column(Date, default=datetime.now())
 
+    def json(self):
+        return {'id': self.id, 'name': self.name}
+
     def __repr__(self):
-        return f"User(id={self.id!r}, name={self.name!r}, email={self.email!r})"
-         
+        
+        return f"id:{self.id!r}, name:{self.name!r}, email:{self.email!r}"
+       
