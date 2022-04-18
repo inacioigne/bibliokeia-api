@@ -3,6 +3,7 @@ from typing import Optional, List
 
 
 class Exe_Schema(BaseModel):
+  id: int
   library: str
   shelf: Optional[str]
   callnumber: str
@@ -14,5 +15,5 @@ class Exe_Schema(BaseModel):
   
 
 
-class Request_Exemplares(BaseModel):
+class Response_Exemplares(BaseModel):
   exemplares: List[Exe_Schema]

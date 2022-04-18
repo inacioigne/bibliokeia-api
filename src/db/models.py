@@ -92,15 +92,14 @@ class Exemplar(Base):
     id = Column(Integer, primary_key=True)
     item_id = Column(Integer, ForeignKey('item.id'))
     
-    number = Column(String(10))
-    callnumber = Column(String(30))
-    edition = Column(String(10))
-    year = Column(YEAR)
-    volume = Column(String(5))
     library = Column(String(30))
     shelf = Column(String(30))
-    status = Column(String(30))
+    callnumber = Column(String(30))
     collection = Column(String(30))
+    number = Column(String(10))
+    volume = Column(String(5))
+    ex = Column(String(5))
+    status = Column(String(30))
     created_at = Column(Date, default=datetime.now())
     #user
 
