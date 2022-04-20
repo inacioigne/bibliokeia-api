@@ -1,11 +1,12 @@
 from pickletools import read_int4
 from fastapi import APIRouter, Depends, HTTPException
-from src.schemas.request.cataloguing.exemplar import Request_Exemplares, Request_Del_Exemplares
+from src.schemas.request.cataloguing.exemplar import Request_Exemplares, Request_Del_Exemplares, Exe_Schema
 from src.schemas.response.cataloguing.exemplar import Response_Exemplares
-from src.db.init_db import session
+from src.db.init_db import session, engine
 from src.db.models import Item, User, Exemplar
 from src.auth.login import get_usuario_logado
 from datetime import date
+from sqlalchemy import update
 
 router = APIRouter()
 
@@ -59,6 +60,30 @@ async def create_exemplar(
     session.commit()
 
     return item.exemplares
+
+#ATUALIZA EXEMPLAR
+@router.put('/{ex_id}' )#, response_model=Request_Exemplares)
+async def patch_exemplar(
+    ex_id: int, 
+    request: Exe_Schema,
+    auth: User = Depends(get_usuario_logado)):
+
+    ex = session.query(Exemplar).filter_by(id = ex_id).first()
+    if ex is None:
+        raise HTTPException(status_code=404, detail="Exemplar not found")
+    
+    stmt = (
+        update(Exemplar).
+        where(Exemplar.id == 33).
+        values(**request.dict()))
+    session.execute(stmt)
+    session.commit()    
+    
+    return {'msg': "Exemplares atualizados com sucesso!"}
+
+
+
+
 
 #DELETA EXEMPLARES
 @router.delete('/{ex_id}')

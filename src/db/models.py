@@ -97,8 +97,8 @@ class Exemplar(Base):
     callnumber = Column(String(30))
     collection = Column(String(30))
     number = Column(String(10))
-    volume = Column(String(5))
-    ex = Column(String(5))
+    volume = Column(String(10))
+    ex = Column(String(10))
     status = Column(String(30))
     created_at = Column(Date, default=datetime.now())
     #user
