@@ -11,8 +11,10 @@ class Exe_Schema(BaseModel):
   ex: Optional[str]
   number: str
   status: Optional[str]
-  
-
 
 class Request_Exemplares(BaseModel):
   exemplares: List[Exe_Schema]
+
+class Request_Del_Exemplares(BaseModel):
+  exemplares: List[int]
+
