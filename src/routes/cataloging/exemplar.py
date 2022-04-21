@@ -50,6 +50,7 @@ async def create_exemplar(
             number = ex.number,
             callnumber = ex.callnumber,
             volume = ex.volume,
+            ex = ex.ex,
             library = ex.library,
             shelf = ex.shelf,
             status = ex.status,
@@ -74,7 +75,7 @@ async def patch_exemplar(
     
     stmt = (
         update(Exemplar).
-        where(Exemplar.id == 33).
+        where(Exemplar.id == ex_id).
         values(**request.dict()))
     session.execute(stmt)
     session.commit()    

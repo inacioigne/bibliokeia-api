@@ -16,7 +16,7 @@ from sqlalchemy import update
 
 
 
-item = session.query(Item).filter_by(id = 15).first()
+exe = session.query(Exemplar).filter_by(id = 15).first()
 
 
 body = {
@@ -37,9 +37,6 @@ stmt = (
     where(Exemplar.id == 33).
     values(**request.dict())
 )
-
-session.execute(stmt)
-session.commit()
 
 
 
