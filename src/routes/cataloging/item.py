@@ -74,6 +74,22 @@ async def patch_item(
 
     return Marc_Bibliographic(**item.marc)
 
+@router.delete('/{item_id}')
+async def delete_item(
+    item_id: int,
+    auth: User = Depends(get_usuario_logado)):
+
+    item = session.query(Item).filter_by(id = item_id).first()
+    if item is None:
+        raise HTTPException(status_code=404, detail="Item not found")
+
+    session.delete(item)
+    session.commit()
+
+    return {'msg': "Item excluido com sucesso!"}
+
+
+
 
 
 
