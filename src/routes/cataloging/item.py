@@ -74,6 +74,38 @@ async def patch_item(
 
     return Marc_Bibliographic(**item.marc)
 
+@router.put('/{item_id}', response_model= Marc_Bibliographic)
+async def put_item(
+    item_id: int, 
+    request: Marc_Bibliographic, 
+    auth: User = Depends(get_usuario_logado)):
+
+    item = session.query(Item).filter_by(id = item_id).first()
+    if item is None:
+        raise HTTPException(status_code=404, detail="Item not found")
+
+    #Update Logs
+    logs = deepcopy(item.logs)
+    if 'updates' in logs.keys():
+        logs.get('updates').append({
+            'user': {'id': auth.id, 'name': auth.name },
+            "date": datetime.now().strftime("%d/%m/%Y %H:%M")})
+    else:
+        logs['updates'] = [{
+            'user': {'id': auth.id, 'name': auth.name },
+            "date": datetime.now().strftime("%d/%m/%Y %H:%M")}]
+    item.logs = logs
+
+    item.marc = request.dict()
+
+    return Marc_Bibliographic(**item.marc)
+
+
+
+
+
+
+
 @router.delete('/{item_id}')
 async def delete_item(
     item_id: int,
