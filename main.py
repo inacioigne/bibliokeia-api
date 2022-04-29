@@ -8,6 +8,7 @@ from src.routes import imports, items, checkup, users
 from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
 from src.routes.cataloging import item, exemplar
+import uvicorn
 
 initializeDatabase()
 
@@ -40,3 +41,7 @@ app.include_router(checkup.router)
 app.include_router(users.router, prefix='/usuarios', tags=['Usuarios'])
 app.include_router(item.router, prefix='/cataloging/item', tags=['Cataloging Item'] )
 app.include_router(exemplar.router, prefix='/cataloging/exemplar', tags=["Cataloguing Exemplar"] )
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="127.0.0.1", port=8000)
