@@ -25,7 +25,7 @@ app = FastAPI(
 origins = [
     "http://localhost:3000",
     'http://127.0.0.1:3000',
-    "http://172.21.215.224:3000"
+    "http://172.21.214.56:3000",
 ]
 app.add_middleware(
     CORSMiddleware,
@@ -44,4 +44,4 @@ app.include_router(exemplar.router, prefix='/cataloging/exemplar', tags=["Catalo
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=8000)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000)
