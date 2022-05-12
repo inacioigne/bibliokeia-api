@@ -37,7 +37,8 @@ async def login(username: str = Form(...), password: str = Form(...)):
                             detail="Email ou nome de usuário incorretos"
                            )
     return {
-        "access_token": criar_token_jwt(user.id),
+        "access_token": criar_token_jwt({'id': user.id, 'name': user.name} ),
         "token_type": "bearer",
         "user": {"id": user.id, "name": user.name }
     }
+ 
