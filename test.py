@@ -11,8 +11,8 @@ from sqlalchemy import delete
 from sqlalchemy import inspect
 from sqlalchemy import update
 
+e = 'inacio@mail.com'
 
-
-item = session.query(Item).filter_by(id = 1).first()
+user = session.query(User).filter_by(email = 'admin@bibliokeia').first()
 
 

@@ -14,8 +14,14 @@ router = APIRouter()
 class Response(BaseModel):
     msg: str
 
-@router.post("/", response_model=UserResponse)
-async def add_item(create_request: UserCreateRequest):
+@router.post("/", response_model=UserResponse, status_code=201)
+async def register(create_request: UserCreateRequest):
+    user = session.query(User).filter_by(email = create_request.email).first()
+    if user:
+        raise HTTPException(status_code=409,
+                            detail="Email ja cadastrado"
+                           )
+                           
     atributos = create_request.dict(exclude_unset=True)
     user = User(**atributos)
     session.add(user)
@@ -23,10 +29,10 @@ async def add_item(create_request: UserCreateRequest):
 
     return  {'id':user.id,'name':user.name,'email':user.email}
 
-@router.get("/")
-@get_all(User)
-async def list_item():
-    pass
+# @router.get("/")
+# @get_all(User)
+# async def list_item():
+#     pass
 
 @router.post("/login")
 async def login(username: str = Form(...), password: str = Form(...)):
